@@ -28,7 +28,14 @@ const OneProduct = () => {
 
   const ingredients = getIngredients(meal);
 
-  const { strMealThumb, strMeal, strArea, strCategory, strInstructions } = meal;
+  const {
+    strMealThumb,
+    strMeal,
+    strArea,
+    strCategory,
+    strInstructions,
+    strYoutube,
+  } = meal;
 
   return (
     <>
@@ -47,6 +54,12 @@ const OneProduct = () => {
             )}
           />
           <p>{strInstructions}</p>
+          <span>
+            watch on Youtube:{" "}
+            <a target="_blank" href={strYoutube}>
+              {strYoutube}
+            </a>
+          </span>
         </div>
       </div>
 
