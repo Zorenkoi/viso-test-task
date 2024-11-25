@@ -3,13 +3,13 @@ import IngredientsTable from "../components/IngredientsTable";
 import MealsList from "../components/MealsList";
 import { IIngredient } from "../interfaces";
 import { useAppSelector } from "../store";
-import { getIngridients } from "../utils/utils";
+import { getIngredients } from "../utils/utils";
 
 const Cart = () => {
   const mealsFromCart = useAppSelector((state) => state.cart);
 
   const allIngredients = mealsFromCart.reduce<IIngredient[]>(
-    (acc, meal) => [...acc, ...getIngridients(meal)],
+    (acc, meal) => [...acc, ...getIngredients(meal)],
     []
   );
 

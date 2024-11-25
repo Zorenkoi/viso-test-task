@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { fetchMealById } from "../services";
-import { getIngridients } from "../utils/utils";
+import { getIngredients } from "../utils/utils";
 import IngredientsTable from "../components/IngredientsTable";
 import { useAppDispatch, useAppSelector } from "../store";
 import ToggleMealButton from "../components/ToggleMealButton";
@@ -19,7 +19,7 @@ const OneProduct = () => {
 
   if (!meal) return null;
 
-  const ingredients = getIngridients(meal);
+  const ingredients = getIngredients(meal);
 
   const { strMealThumb, strMeal, strArea, strCategory, strInstructions } = meal;
   return (
