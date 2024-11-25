@@ -17,12 +17,17 @@ const MealListContainer: React.FC<IProps> = ({ name, category }) => {
     setCurrentPage(1);
   }, [name, category]);
 
-  const { data: meals } = useQuery({
+  const {
+    data: meals,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["meals", name],
     queryFn: ({ queryKey }) => fetchMealsByName(queryKey[1]),
   });
 
-  if (!meals) return null;
+  if (isLoading) return <h2>Loading...</h2>;
+  if (isError || !meals) return <h2>Error...</h2>;
 
   const pageSize = 6;
   const filteredMeals = filterMealsByCategory(meals, category);

@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import IngredientsTable from "../components/IngredientsTable";
 import MealsList from "../components/MealsList";
 import { IIngredient } from "../interfaces";
-import { useAppSelector } from "../store";
 import { getIngredients } from "../utils/utils";
+import useCart from "../hooks/useCart";
 
 const Cart = () => {
-  const mealsFromCart = useAppSelector((state) => state.cart);
+  const { mealsFromCart } = useCart();
 
   const allIngredients = mealsFromCart.reduce<IIngredient[]>(
     (acc, meal) => [...acc, ...getIngredients(meal)],
@@ -27,6 +27,7 @@ const Cart = () => {
   return (
     <div className="cartpage">
       <MealsList meals={mealsFromCart} showInstructions={true} />
+
       <IngredientsTable ingredients={consolidatedIngridients} />
     </div>
   );

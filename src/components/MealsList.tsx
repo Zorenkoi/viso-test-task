@@ -2,8 +2,8 @@ import React from "react";
 import { IMeal } from "../interfaces";
 import MealsCard, { MealsCardWithInstructions } from "./MealsCard";
 import { toggleMeal } from "../store/cartSlice";
-import { useAppSelector } from "../store";
 import { useAppDispatch } from "../store";
+import useCart from "../hooks/useCart";
 
 interface IProps {
   meals: IMeal[];
@@ -12,7 +12,7 @@ interface IProps {
 
 const MealsList: React.FC<IProps> = ({ meals, showInstructions = false }) => {
   const dispatch = useAppDispatch();
-  const mealsFromCart = useAppSelector((state) => state.cart);
+  const { mealsFromCart } = useCart();
 
   return (
     <div className={`meals__list ${showInstructions && "show-instructions"}`}>

@@ -7,22 +7,25 @@ interface IProps {
 
 const IngredientsTable: React.FC<IProps> = ({ ingredients }) => {
   return (
-    <table className="ingredients__table">
-      <thead>
-        <tr>
-          <th>Ingredient</th>
-          <th>Measurement</th>
-        </tr>
-      </thead>
-      <tbody>
-        {ingredients.map(({ ingredient, measure }, index) => (
-          <tr key={index}>
-            <td>{ingredient}</td>
-            <td>{measure}</td>
+    <>
+      <h2 className="ingredients__table-title">Ingredients</h2>
+      <table className="ingredients__table">
+        <thead>
+          <tr>
+            <th>Ingredient</th>
+            <th>Measurement</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {ingredients.map(({ ingredient, measure }, index) => (
+            <tr key={index}>
+              <td>{ingredient}</td>
+              <td>{measure}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 };
 

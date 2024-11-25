@@ -10,7 +10,7 @@ const ToggleMealButton: React.FC<IProps> = ({
   isMealInCart,
 }) => {
   return (
-    <button onClick={handleToggleMeal} className="meals__card-button">
+    <button onClick={handleToggleMeal} className="meals-card__button">
       {isMealInCart ? "remove from cart" : "add to cart"}
     </button>
   );

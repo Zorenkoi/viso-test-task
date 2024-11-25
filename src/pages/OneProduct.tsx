@@ -12,12 +12,17 @@ const OneProduct = () => {
   const dispatch = useAppDispatch();
   const mealsFromCart = useAppSelector((state) => state.cart);
 
-  const { data: meal } = useQuery({
+  const {
+    data: meal,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["product"],
     queryFn: () => fetchMealById(id || ""),
   });
 
-  if (!meal) return null;
+  if (isLoading) return <h2>Loading...</h2>;
+  if (isError || !meal) return <h2>Error...</h2>;
 
   const ingredients = getIngredients(meal);
 

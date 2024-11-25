@@ -50,8 +50,6 @@ export const fetchAllCategories = async (): Promise<ICategory[]> => {
 };
 
 export const fetchMealById = async (id: string): Promise<IMeal> => {
-  console.log(`${BASE_URL}/lookup.php?=${id}`);
-
   const response = await axios.get<{ meals: IMeal[] }>(
     `${BASE_URL}/lookup.php?i=${id}`
   );

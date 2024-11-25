@@ -13,6 +13,10 @@
   height: 30px;
 }
 
+button {
+  cursor: pointer;
+}
+
 /* NavBar */
 .navbar {
   background-color: black;
@@ -92,8 +96,8 @@
 
 .meals-card.show-instructions {
   display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 10px;
+  grid-template-columns: 250px 1fr;
+  gap: 20px;
 }
 
 /* Pagination */
@@ -145,6 +149,9 @@
 }
 
 /* Ingredients table */
+.ingredients__table-title {
+  margin-bottom: 10px;
+}
 .ingredients__table {
   display: grid;
   grid-template-columns: auto auto;
