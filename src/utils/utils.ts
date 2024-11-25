@@ -1,13 +1,13 @@
 import { IIngredient, IMeal } from "../interfaces";
 
-export function getIngridients(meal: IMeal): IIngredient[] {
-  const ingredients = [];
+export function getIngredients(meal: IMeal): IIngredient[] {
+  const ingredients: IIngredient[] = [];
   for (let i = 1; i <= 20; i++) {
-    const ingredient = meal[`strIngredient${i}`];
-    const measure = meal[`strMeasure${i}`];
+    const ingredient = (meal as any)[`strIngredient${i}`] as string | undefined;
+    const measure = (meal as any)[`strMeasure${i}`] as string | undefined;
 
     if (ingredient && ingredient.trim() !== "") {
-      ingredients.push({ ingredient, measure });
+      ingredients.push({ ingredient, measure: measure || "" });
     }
   }
 
