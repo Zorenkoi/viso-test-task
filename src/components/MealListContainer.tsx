@@ -27,7 +27,8 @@ const MealListContainer: React.FC<IProps> = ({ name, category }) => {
   });
 
   if (isLoading) return <h2>Loading...</h2>;
-  if (isError || !meals) return <h2>Error...</h2>;
+  if (isError) return <h2>Error...</h2>;
+  if (!meals) return <h2>No meals for your query</h2>;
 
   const pageSize = 6;
   const filteredMeals = filterMealsByCategory(meals, category);
@@ -49,9 +50,9 @@ const MealListContainer: React.FC<IProps> = ({ name, category }) => {
 
 function filterMealsByCategory(meals: IMeal[], category: string) {
   if (category === "") return meals;
-
   return meals.filter(({ strCategory }) => strCategory === category);
 }
+
 function sliceMeals(meals: IMeal[], currentPage: number, pageSize: number) {
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;

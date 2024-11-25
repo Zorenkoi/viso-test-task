@@ -3,22 +3,24 @@ import { useParams } from "react-router-dom";
 import { fetchMealById } from "../services";
 import { getIngredients } from "../utils/utils";
 import IngredientsTable from "../components/IngredientsTable";
-import { useAppDispatch, useAppSelector } from "../store";
+import { useAppDispatch } from "../store";
 import ToggleMealButton from "../components/ToggleMealButton";
 import { toggleMeal } from "../store/cartSlice";
+import useCart from "../hooks/useCart";
 
 const OneProduct = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
-  const mealsFromCart = useAppSelector((state) => state.cart);
+  const { mealsFromCart } = useCart();
 
   const {
     data: meal,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["product"],
+    queryKey: ["product", id],
     queryFn: () => fetchMealById(id || ""),
+    enabled: !!id,
   });
 
   if (isLoading) return <h2>Loading...</h2>;
@@ -27,6 +29,7 @@ const OneProduct = () => {
   const ingredients = getIngredients(meal);
 
   const { strMealThumb, strMeal, strArea, strCategory, strInstructions } = meal;
+
   return (
     <>
       <div className="meal__grid">
